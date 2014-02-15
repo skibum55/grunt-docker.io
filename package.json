@@ -1,0 +1,36 @@
+{
+  "name": "grunt-dockerio",
+  "version": "0.0.1",
+  "description": "Grunt plugin to build docker containers",
+  "homepage": "https://github.com/skibum55/grunt-docker.io",
+  "repository": "https://github.com/skibum55/grunt-docker.io",
+  "bugs": "https://github.com/skibum55/grunt-docker.ioissues",
+  "author": {
+    "name": "Sean Keery",
+    "email": "skibum55@hotmail.com",
+    "url": "http://seankeery.com"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt": "~0.4.0rc2",
+    "jshint-stylish": "~0.1.3",
+    "load-grunt-tasks": "~0.2.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  }
+}
