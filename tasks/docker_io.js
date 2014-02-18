@@ -4,6 +4,41 @@
  *
  * Copyright (c) 2014 Sean Keery
  * Licensed under the MIT license.
+ *
+ * Deploy updated node application into docker container.
+ *
+ * Parameters:
+ *  Host - server running docker daemon.  Default = 127.0.0.1
+ *  Port - port docker daemon is using.  Default = 4243
+ *  Key - public key for connections that are secure. Default is null 
+ *  Version - Id of current container version.  Default = '0.0.1' 
+ *  Image - name of container. Default = '<repository name>'
+ *  JSONParameters - parameters used to start containers (post json file?)
+ *
+ * Tasks :
+ *  Pull version number from metadata
+ *  Attach to host (optional SSL)
+ *  Build container from image
+ *  Stop existing container (if it exists)
+ *  Start new container
+ *  Increment version number in source
+ *  
+ * Requirements :
+ *  Docker >= 0.8
+ *  Grunt ~=0.4.2
+ *  REST
+ *
+ * Dependencies :
+ *  See package.json
+ *
+ *
+ * Future:
+ *  Error handling
+ *  Rollback to previous version(s)
+ *  Build new containers or images from local Dockerfile
+ *  Build on multiple hosts
+ *  Register hosts with load balancer, scaling groups and service registries
+ *  Orchestrations with Maestro-NG
  */
 
 'use strict';
