@@ -22,6 +22,10 @@
       "type": "MIT"
     }
   ],
+  "Dependencies": {
+    "docker-modem": "~0.1.10",
+    "docker.io": "~0.9.8",
+  },
   "devDependencies": {
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-jshint": "~0.2.0",
