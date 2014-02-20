@@ -43,6 +43,9 @@
 
 'use strict';
 
+var Docker = require('dockerode');
+var docker = new Docker({host: 'http://192.168.1.10', port: 3000});
+
 module.exports = function (grunt) {
 
   // Please see the Grunt documentation for more information regarding task
@@ -50,6 +53,32 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('docker_io', 'Grunt plugin to build docker containers', function () {
 
+    // build docker image from local tarball
+    docker.buildImage('archive.tar', {t: imageName}, function(err, response){
+    //...
+    });
+    // run container
+    docker.run('ubuntu', ['bash', '-c', 'uname -a'], process.stdout, function(err, data, container) {
+      console.log(data.StatusCode);
+    });
+    
+    // individual container stuff
+    var container = docker.getContainer('71501a8ab0f8');
+
+    container.start(function (err, data) {
+      console.log(data);
+    });
+
+    container.remove(function (err, data) {
+      console.log(data);
+    });
+    
+    // stop all Containers
+    docker.listContainers(function(err, containers) {
+      containers.forEach(function(containerInfo) {
+        docker.getContainer(containerInfo.Id).stop(cb);
+      });
+    });
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
