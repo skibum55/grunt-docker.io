@@ -51,6 +51,23 @@ module.exports = function (grunt) {
       }
     },
 
+    // Grunt bump for version management 
+    bump: {
+     options: {
+       files: ['Dockerfile'],
+       updateConfigs: [],
+       commit: true,
+       commitMessage: 'Release v%VERSION%',
+       commitFiles: ['package.json'], // '-a' for all files
+       createTag: true,
+       tagName: 'v%VERSION%',
+       tagMessage: 'Version %VERSION%',
+       push: true,
+       pushTo: 'upstream',
+       gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
+     }
+    },   
+ 
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
@@ -60,6 +77,7 @@ module.exports = function (grunt) {
 
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-bump');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
