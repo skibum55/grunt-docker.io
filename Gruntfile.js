@@ -34,7 +34,13 @@ module.exports = function (grunt) {
     // Configuration to be run (and then tested).
     docker_io: {
       default_options: {
-        options: {
+        options: { 
+          host: '127.0.0.1',
+          port: '4243,
+          key : '',
+          version :'0.0.1',
+          image : 'Default',
+          JSONParameters : ''
         },
         files: {
           'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
